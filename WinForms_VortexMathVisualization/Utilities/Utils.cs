@@ -8,23 +8,26 @@ namespace WinForms_VortexMathVisualization.Utilities
 {
     internal class Utils
     {
-        public static int DigitalRoot(int number)
+        public static Point[] GetPointsOnCircle(int centerPoint,int radius, int modulo)
         {
-            int root = 0;
+            Point[] points = new Point[radius];
 
-            while (number > 0 || root > 9)
+            float circleArcRadius = (float)((2 * Math.PI) / modulo);
+            for(int i = 0; i < modulo; i++)
             {
-                if (number == 0)
-                {
-                    number = root;
-                    root = 0;
-                }
-
-                root += number % 10;
-                number /= 10;
+                float x = (float)(radius * Math.Cos(i * circleArcRadius - Math.PI / 2));
+                float y = (float)(radius * Math.Sin(i * circleArcRadius - Math.PI / 2));
+                points[i] = new Point(centerPoint + x, centerPoint+ y);
             }
 
-            return root;
+            return points;
+        }
+
+        public static int[] GetLoops(int multiplier, int modulo)
+        {
+            
+
+            return new int[modulo];
         }
     }
 }

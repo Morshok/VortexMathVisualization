@@ -22,13 +22,6 @@ namespace WinForms_VortexMathVisualization
         {
             int multiplier = int.Parse(multiplierTextBox.Text);
             int modulo = int.Parse(multiplierTextBox.Text);
-
-            VisualizeVortexMath(multiplier, modulo);
-        }
-
-        private void VisualizeVortexMath(int multiplier, int modulo)
-        { 
-
         }
     }
 }
