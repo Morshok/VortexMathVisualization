@@ -55,10 +55,17 @@ namespace WinForms_VortexMathVisualization
 
                     foreach (int[] loop in loops)
                     {
+                        if (loop.Length <= 1) continue;
+
                         for(int i = 0; i < loop.Length; i++)
                         {
-                            Utilities.Point from = points[i];
-                            Utilities.Point to = points[loop[i]];
+                            Utilities.Point from = points[loop[i]];
+
+                            int toIndex;
+                            if (i < loop.Length - 1) toIndex = loop[i + 1];
+                            else toIndex = loop[0];
+
+                            Utilities.Point to = points[toIndex];
 
                             graphics.DrawLine(new Pen(Brushes.Black), from.GetX(), from.GetY(), to.GetX(), to.GetY());
                         }
