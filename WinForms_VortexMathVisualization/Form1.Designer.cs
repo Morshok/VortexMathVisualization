@@ -28,23 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.multiplierLabel = new System.Windows.Forms.Label();
             this.multiplierTextBox = new System.Windows.Forms.TextBox();
             this.moduloTextBox = new System.Windows.Forms.TextBox();
             this.moduloLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.visualizeButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.canvas = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(460, 460);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // multiplierLabel
             // 
@@ -97,37 +89,43 @@
             this.visualizeButton.UseVisualStyleBackColor = true;
             this.visualizeButton.Click += new System.EventHandler(this.visualizeButton_Click);
             // 
+            // canvas
+            // 
+            this.canvas.Location = new System.Drawing.Point(12, 12);
+            this.canvas.Name = "canvas";
+            this.canvas.Size = new System.Drawing.Size(460, 460);
+            this.canvas.TabIndex = 8;
+            // 
             // VortexMathVisualizerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 536);
+            this.Controls.Add(this.canvas);
             this.Controls.Add(this.visualizeButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.moduloTextBox);
             this.Controls.Add(this.moduloLabel);
             this.Controls.Add(this.multiplierTextBox);
             this.Controls.Add(this.multiplierLabel);
-            this.Controls.Add(this.pictureBox1);
             this.MaximizeBox = false;
             this.Name = "VortexMathVisualizerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vortex Math Visualizer";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label multiplierLabel;
         private System.Windows.Forms.TextBox multiplierTextBox;
         private System.Windows.Forms.TextBox moduloTextBox;
         private System.Windows.Forms.Label moduloLabel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button visualizeButton;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel canvas;
     }
 }
 

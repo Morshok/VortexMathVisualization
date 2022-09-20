@@ -8,7 +8,7 @@ namespace WinForms_VortexMathVisualization.Utilities
 {
     internal class Utils
     {
-        public static List<Point> GetPointsOnCircle(int centerPoint,int radius, int modulo)
+        public static List<Point> GetPointsOnCircle(Point centerPoint,int radius, int modulo)
         {
             List<Point> points = new List<Point>();
 
@@ -17,7 +17,7 @@ namespace WinForms_VortexMathVisualization.Utilities
             {
                 float x = (float)(radius * Math.Cos(i * circleArcRadius - Math.PI / 2));
                 float y = (float)(radius * Math.Sin(i * circleArcRadius - Math.PI / 2));
-                points.Add(new Point(centerPoint + x, centerPoint+ y));
+                points.Add(new Point(centerPoint.GetX() + x, centerPoint.GetY() + y));
             }
 
             return points;
