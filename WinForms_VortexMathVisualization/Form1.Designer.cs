@@ -134,16 +134,17 @@
             // 
             this.linewidthComboBox.FormattingEnabled = true;
             this.linewidthComboBox.Items.AddRange(new object[] {
-            "0.125px",
-            "0.25px",
-            "0.5px",
-            "1px",
-            "2px",
-            "4px"});
+            "0.125",
+            "0.25",
+            "0.5",
+            "1",
+            "2",
+            "4"});
             this.linewidthComboBox.Location = new System.Drawing.Point(352, 28);
             this.linewidthComboBox.Name = "linewidthComboBox";
             this.linewidthComboBox.Size = new System.Drawing.Size(121, 21);
             this.linewidthComboBox.TabIndex = 9;
+            this.linewidthComboBox.SelectedIndexChanged += new System.EventHandler(this.linewidthComboBox_SelectedIndexChanged);
             // 
             // colormodeLabel
             // 
@@ -159,9 +160,9 @@
             this.linewidthLabel.AutoSize = true;
             this.linewidthLabel.Location = new System.Drawing.Point(352, 12);
             this.linewidthLabel.Name = "linewidthLabel";
-            this.linewidthLabel.Size = new System.Drawing.Size(61, 13);
+            this.linewidthLabel.Size = new System.Drawing.Size(81, 13);
             this.linewidthLabel.TabIndex = 11;
-            this.linewidthLabel.Text = "Line Width:";
+            this.linewidthLabel.Text = "Line Width (px):";
             // 
             // menuStrip1
             // 
