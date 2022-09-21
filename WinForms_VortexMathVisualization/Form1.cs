@@ -82,7 +82,7 @@ namespace WinForms_VortexMathVisualization
                     graphics.FillEllipse(Brushes.Yellow, yellowCircle);
                 }
 
-                Pen linePen = new Pen(Brushes.Black);
+                Pen linePen = new Pen(Color.FromArgb(64, 0, 0, 0));
                 linePen.Width = (float)this.penLineWidth;
 
                 foreach (int[] loop in loops)
