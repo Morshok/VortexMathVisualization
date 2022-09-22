@@ -124,11 +124,13 @@
             this.colormodeComboBox.FormattingEnabled = true;
             this.colormodeComboBox.Items.AddRange(new object[] {
             "None",
-            "Loop Group"});
+            "Loop Group",
+            "Line Length"});
             this.colormodeComboBox.Location = new System.Drawing.Point(225, 28);
             this.colormodeComboBox.Name = "colormodeComboBox";
             this.colormodeComboBox.Size = new System.Drawing.Size(121, 21);
             this.colormodeComboBox.TabIndex = 8;
+            this.colormodeComboBox.SelectedIndexChanged += new System.EventHandler(this.colormodeComboBox_SelectedIndexChanged);
             // 
             // linewidthComboBox
             // 

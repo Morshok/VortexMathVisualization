@@ -11,10 +11,19 @@ using System.Collections.Generic;
 
 namespace WinForms_VortexMathVisualization
 {
+    enum ColorMode
+    {
+        None,
+        LoopGroup,
+        LineLength
+    }
+
     public partial class VortexMathVisualizerForm : Form
     {
         private int center_x, center_y, radius, margin, yellowCircleDimensions, multiplier, modulo;
         private float penLineWidth;
+        private ColorMode colorMode;
+        private Color[] LineLengthColors;
         private Rectangle initialCircle;
 
         public VortexMathVisualizerForm()
@@ -26,6 +35,17 @@ namespace WinForms_VortexMathVisualization
 
             if (float.TryParse(linewidthComboBox.SelectedItem.ToString(), out _))
                 this.penLineWidth = float.Parse(linewidthComboBox.SelectedItem.ToString());
+
+            this.colorMode = (ColorMode)colormodeComboBox.SelectedIndex;
+
+            LineLengthColors = new Color[] 
+            { 
+                Color.FromArgb(64, 50, 147, 226), 
+                Color.FromArgb(64, 58, 212, 107), 
+                Color.FromArgb(64, 250, 203, 42), 
+                Color.FromArgb(64, 255, 129, 50), 
+                Color.FromArgb(64, 132, 58, 83)
+            };
 
             center_x = center_y = Math.Max(canvas.Width / 2, canvas.Height / 2);
             margin = 10;
@@ -39,6 +59,12 @@ namespace WinForms_VortexMathVisualization
             if(float.TryParse(linewidthComboBox.SelectedItem.ToString(), out _))
                 this.penLineWidth = float.Parse(linewidthComboBox.SelectedItem.ToString());
 
+            VisualizeVortexMath(multiplier, modulo);
+        }
+
+        private void colormodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.colorMode = (ColorMode)colormodeComboBox.SelectedIndex;
             VisualizeVortexMath(multiplier, modulo);
         }
 
@@ -82,12 +108,21 @@ namespace WinForms_VortexMathVisualization
                     graphics.FillEllipse(Brushes.Yellow, yellowCircle);
                 }
 
-                Pen linePen = new Pen(Color.FromArgb(64, 0, 0, 0));
-                linePen.Width = (float)this.penLineWidth;
+                Pen linePen = null;
+                if(colorMode.Equals(ColorMode.None)) linePen = new Pen(Color.FromArgb(64, 0, 0, 0), this.penLineWidth);
 
                 foreach (int[] loop in loops)
                 {
                     if (loop.Length <= 1) continue;
+
+                    if(colorMode.Equals(ColorMode.LoopGroup))
+                    {
+                        Random random = new Random((int)DateTime.Now.Ticks);
+                        int r = random.Next(256);
+                        int g = random.Next(256);
+                        int b = random.Next(256);
+                        linePen = new Pen(Color.FromArgb(64, r, g, b), this.penLineWidth);
+                    }
 
                     for (int i = 0; i < loop.Length; i++)
                     {
@@ -98,6 +133,16 @@ namespace WinForms_VortexMathVisualization
                         else toIndex = loop[0];
 
                         Utilities.Point to = points[toIndex];
+
+                        if (colorMode.Equals(ColorMode.LineLength))
+                        {
+                            float lineLength = Utilities.Utils.Distance(from, to);
+                            float percentage = (lineLength / (2 * this.radius));
+                            int colorIndex = (int)Math.Round((1 - percentage) * (LineLengthColors.Length - 1));
+                            Color lineColor = LineLengthColors[colorIndex];
+
+                            linePen = new Pen(lineColor, this.penLineWidth);
+                        }
 
                         graphics.DrawLine(linePen, from.GetX(), from.GetY(), to.GetX(), to.GetY());
                     }

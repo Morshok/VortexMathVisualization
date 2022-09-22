@@ -50,5 +50,10 @@ namespace WinForms_VortexMathVisualization.Utilities
 
             return loops;
         }
+
+        public static float Distance(Point p1, Point p2)
+        {
+            return (float)Math.Sqrt(Math.Pow(p2.GetX() - p1.GetX(), 2) + Math.Pow(p2.GetY() - p1.GetY(), 2));
+        }
     }
 }
