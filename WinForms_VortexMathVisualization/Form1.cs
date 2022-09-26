@@ -91,19 +91,23 @@ namespace WinForms_VortexMathVisualization
                     {
                         canvas.DrawToBitmap(bitmap, new Rectangle(0, 0, canvas.Width, canvas.Height));
 
-                        switch (saveFileDialog.FilterIndex)
+                        string fileExtension = Path.GetExtension(saveFileDialog.FileName);
+
+                        switch (fileExtension)
                         {
-                            case 1:
+                            case ".jpeg":
                                 bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
                                 break;
-                            case 2:
+                            case ".bmp":
                                 bitmap.Save(saveFileDialog.FileName, ImageFormat.Bmp);
                                 break;
-                            case 3:
+                            case ".png":
                                 bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
                                 break;
                             default:
-                                // Inform user that the file format selected is unsupported
+                                string message = "File format currently not supported!";
+                                string title = "Warning!";
+                                MessageBox.Show(message, title, MessageBoxButtons.OK);
                                 break;
                         }
                     }
