@@ -35,11 +35,11 @@
             this.visualizeButton = new System.Windows.Forms.Button();
             this.canvas = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.colormodeComboBox = new System.Windows.Forms.ComboBox();
-            this.linewidthComboBox = new System.Windows.Forms.ComboBox();
-            this.colormodeLabel = new System.Windows.Forms.Label();
             this.linewidthLabel = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.colormodeLabel = new System.Windows.Forms.Label();
+            this.linewidthComboBox = new System.Windows.Forms.ComboBox();
+            this.colormodeComboBox = new System.Windows.Forms.ComboBox();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +48,7 @@
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // multiplierLabel
@@ -119,18 +119,23 @@
             this.panel1.Size = new System.Drawing.Size(734, 58);
             this.panel1.TabIndex = 9;
             // 
-            // colormodeComboBox
+            // linewidthLabel
             // 
-            this.colormodeComboBox.FormattingEnabled = true;
-            this.colormodeComboBox.Items.AddRange(new object[] {
-            "None",
-            "Loop Group",
-            "Line Length"});
-            this.colormodeComboBox.Location = new System.Drawing.Point(225, 28);
-            this.colormodeComboBox.Name = "colormodeComboBox";
-            this.colormodeComboBox.Size = new System.Drawing.Size(121, 21);
-            this.colormodeComboBox.TabIndex = 8;
-            this.colormodeComboBox.SelectedIndexChanged += new System.EventHandler(this.colormodeComboBox_SelectedIndexChanged);
+            this.linewidthLabel.AutoSize = true;
+            this.linewidthLabel.Location = new System.Drawing.Point(352, 12);
+            this.linewidthLabel.Name = "linewidthLabel";
+            this.linewidthLabel.Size = new System.Drawing.Size(81, 13);
+            this.linewidthLabel.TabIndex = 11;
+            this.linewidthLabel.Text = "Line Width (px):";
+            // 
+            // colormodeLabel
+            // 
+            this.colormodeLabel.AutoSize = true;
+            this.colormodeLabel.Location = new System.Drawing.Point(225, 11);
+            this.colormodeLabel.Name = "colormodeLabel";
+            this.colormodeLabel.Size = new System.Drawing.Size(64, 13);
+            this.colormodeLabel.TabIndex = 10;
+            this.colormodeLabel.Text = "Color Mode:";
             // 
             // linewidthComboBox
             // 
@@ -148,37 +153,32 @@
             this.linewidthComboBox.TabIndex = 9;
             this.linewidthComboBox.SelectedIndexChanged += new System.EventHandler(this.linewidthComboBox_SelectedIndexChanged);
             // 
-            // colormodeLabel
+            // colormodeComboBox
             // 
-            this.colormodeLabel.AutoSize = true;
-            this.colormodeLabel.Location = new System.Drawing.Point(225, 11);
-            this.colormodeLabel.Name = "colormodeLabel";
-            this.colormodeLabel.Size = new System.Drawing.Size(64, 13);
-            this.colormodeLabel.TabIndex = 10;
-            this.colormodeLabel.Text = "Color Mode:";
+            this.colormodeComboBox.FormattingEnabled = true;
+            this.colormodeComboBox.Items.AddRange(new object[] {
+            "None",
+            "Loop Group",
+            "Line Length"});
+            this.colormodeComboBox.Location = new System.Drawing.Point(225, 28);
+            this.colormodeComboBox.Name = "colormodeComboBox";
+            this.colormodeComboBox.Size = new System.Drawing.Size(121, 21);
+            this.colormodeComboBox.TabIndex = 8;
+            this.colormodeComboBox.SelectedIndexChanged += new System.EventHandler(this.colormodeComboBox_SelectedIndexChanged);
             // 
-            // linewidthLabel
+            // menuStrip
             // 
-            this.linewidthLabel.AutoSize = true;
-            this.linewidthLabel.Location = new System.Drawing.Point(352, 12);
-            this.linewidthLabel.Name = "linewidthLabel";
-            this.linewidthLabel.Size = new System.Drawing.Size(81, 13);
-            this.linewidthLabel.TabIndex = 11;
-            this.linewidthLabel.Text = "Line Width (px):";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(734, 24);
-            this.menuStrip1.TabIndex = 10;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(734, 24);
+            this.menuStrip.TabIndex = 10;
+            this.menuStrip.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -201,6 +201,7 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
@@ -234,17 +235,17 @@
             this.ClientSize = new System.Drawing.Size(734, 817);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.canvas);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.Name = "VortexMathVisualizerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vortex Math Visualizer";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,7 +263,7 @@
         private System.Windows.Forms.Label colormodeLabel;
         private System.Windows.Forms.ComboBox linewidthComboBox;
         private System.Windows.Forms.ComboBox colormodeComboBox;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
